@@ -1,10 +1,9 @@
-
 //解决问题的运用的类，一个节点即一个猴子
 public class Node {
-    double key;
-    Node father;
-    Node left;
-    Node right;
+    private double key;
+    private Node father;
+    private Node left;
+    private Node right;
 
     Node(double key, Node father, Node left, Node right) {
         this.key = key;
@@ -17,7 +16,7 @@ public class Node {
         this(key, null, null, null);
     }
 
-    public Node findRoot() {
+    private Node findRoot() {
         Node root = this;
         while (root.father != null) {
             root = root.father;
@@ -25,7 +24,7 @@ public class Node {
         return root;
     }
 
-    public Node merge(Node n1, Node n2) {
+    private Node merge(Node n1, Node n2) {
         if (n1 == null) return n2;
         if (n2 == null) return n1;
 
@@ -64,7 +63,7 @@ public class Node {
         return result;
     }
 
-    public double deleteMaxAndInsert() {
+    private double deleteMaxAndInsert() {
         Node mergeRoot = merge(this.left, this.right);
         if(mergeRoot != null) mergeRoot.father = null;
 
@@ -76,7 +75,7 @@ public class Node {
         return this.key; //返回被删除的节点
     }
 
-    public void insert(Node n) {
+    private void insert(Node n) {
         merge(this, n);
     }
 }
